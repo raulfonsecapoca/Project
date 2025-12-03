@@ -372,8 +372,8 @@ def compare_models_sine_1d(n_train=30,
                            x_min=0.0,
                            x_max=10.0,
                            poly_fixed_degrees=(3, 9),
-                           degree_candidates_poly=(1, 2, 3, 5, 9),
-                           alpha_candidates_poly=(1e-2, 1e-1, 1.0, 10.0),
+                           degree_candidates_poly=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+                           alpha_candidates_poly=(1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1.0, 10.0),
                            alpha_candidates_krr=(1e-3, 1e-2, 1e-1, 1.0, 10.0),
                            gamma_candidates_krr=(0.01, 0.1, 1.0)):
     """
@@ -550,7 +550,8 @@ def main():
         n_train=30,
         noise_std=0.15,
         x_min=0.0,
-        x_max=10.0
+        x_max=10.0,
+        poly_fixed_degrees=(),
     )
 
     # Optional: save tables to CSV
