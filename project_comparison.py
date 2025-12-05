@@ -141,8 +141,8 @@ def load_california_from_train_test(train_path="california_housing_train.csv",
 def compare_models_california(train_path="california_housing_train.csv",
                               test_path="california_housing_test.csv",
                               poly_fixed_degrees=(2, 3),
-                              degree_candidates=(1, 2, 3),
-                              alpha_candidates_poly=(1e-2, 1e-1, 1.0, 10.0),
+                              degree_candidates=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+                              alpha_candidates_poly=(1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1.0, 10.0),
                               alpha_candidates_krr=(1e-2, 1e-1, 1.0, 10.0),
                               gamma_candidates_krr=(0.01, 0.1, 1.0),
                               max_gpr_train_samples=3000):
@@ -542,17 +542,21 @@ def main():
     # 1) California Housing
     cali_results = compare_models_california(
         train_path="california_housing_train.csv",
-        test_path="california_housing_test.csv"
+        test_path="california_housing_test.csv",
+        poly_fixed_degrees=(),
+        degree_candidates=(1, 2, 3),
+        alpha_candidates_poly=(1e-1, 1.0, 10.0),
+        max_gpr_train_samples=12000,
     )
 
     # 2) 1D sine
-    sine1d_results = compare_models_sine_1d(
-        n_train=30,
-        noise_std=0.15,
-        x_min=0.0,
-        x_max=10.0,
-        poly_fixed_degrees=(),
-    )
+    #sine1d_results = compare_models_sine_1d(
+    #    n_train=30,
+    #    noise_std=0.15,
+    #    x_min=0.0,
+    #    x_max=10.0,
+    #    poly_fixed_degrees=(),
+    #)
 
     # Optional: save tables to CSV
     # cali_results.to_csv("summary_california.csv", index=False)
